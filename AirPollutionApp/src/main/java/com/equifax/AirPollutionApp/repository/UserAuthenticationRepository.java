@@ -13,5 +13,6 @@ import com.equifax.AirPollutionApp.entity.UserRegistration;
 public interface UserAuthenticationRepository extends JpaRepository<UserRegistration, Integer> {
 	
 	UserRegistration findByusername(String username);
+	UserRegistration findById(int id);
 
 }

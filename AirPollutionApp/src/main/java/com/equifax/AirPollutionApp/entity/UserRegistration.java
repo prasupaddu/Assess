@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class UserRegistration {
     @Id
     @GeneratedValue
-	private long id;
+	private int id;
 	/*
 	 * @Column private String firstName;
 	 * 
@@ -38,7 +38,7 @@ public class UserRegistration {
 	private byte[] data;
     
     @Column(columnDefinition = "varchar default user")
-    private String userType="admin";
+    private String userType="user";
     @Column(columnDefinition = "boolean default true")
    private boolean activated;
 	public long getId() {

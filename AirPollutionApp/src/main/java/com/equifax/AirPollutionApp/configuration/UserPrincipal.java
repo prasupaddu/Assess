@@ -11,11 +11,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.equifax.AirPollutionApp.entity.UserRegistration;
 
-public class UserDetailsService implements UserDetails {
+public class UserPrincipal implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserRegistration reg;
 	
-	public UserDetailsService(UserRegistration reg) {
+	public UserPrincipal(UserRegistration reg) {
 		super();
 		this.reg = reg;
 	}

@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.equifax.AirPollutionApp.configuration.UserDetailsService;
+import com.equifax.AirPollutionApp.configuration.UserPrincipal;
 import com.equifax.AirPollutionApp.dto.LoginDTO;
 import com.equifax.AirPollutionApp.dto.UserRegistrationDTO;
 import com.equifax.AirPollutionApp.entity.UserRegistration;
@@ -38,23 +38,7 @@ public class APServiceImpl implements APService {
 				return dto;
 	}
 
-	/*
-	 * @Override public String findUserByUserName(LoginDTO dto) { String
-	 * response=""; UserRegistration reg=repository.findByEmail(dto.getEmail());
-	 * if(reg==null) { response="No Data Found!Please Register Before Login"; } else
-	 * { if(reg.isActivated()) { if((dto.getEmail().equals(reg.getEmail())) &&
-	 * (dto.getPassword().equals(reg.getPassword()))) response="LoginSuccess"; else
-	 * { response= "InValid Credentials"; } } else {
-	 * response="User is Not Activated!Try After Some Time"; } } return response; }
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserRegistration registration=repository.findByusername(username);
-		if(registration==null)
-			throw new UsernameNotFoundException("No Records Found");
-		return new UserDetailsService(registration);
-	}
-
+	
 	@Override
 	public String findUserByUserName(LoginDTO dto) {
 		// TODO Auto-generated method stub
@@ -70,7 +54,7 @@ public class APServiceImpl implements APService {
 
 	@Override
 	public UserRegistrationDTO updateUser(int userId) {
-		UserRegistration reg=repository.getById(userId);
+		UserRegistration reg=repository.findById(userId);
 		if(reg!=null)
 			reg.setActivated(true);
 		UserRegistration ureg=repository.save(reg);
