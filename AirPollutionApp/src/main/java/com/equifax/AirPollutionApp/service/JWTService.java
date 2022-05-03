@@ -27,13 +27,11 @@ public class JWTService implements UserDetailsService {
 	
 	public String createJwtToken(LoginDTO dto) throws Exception {
         String userName = dto.getUsername();
-        String userPassword = dto.getPassword();
-       
-
         UserDetails userDetails = loadUserByUsername(userName);
         UserRegistration registration=repository.findByusername(userName);
         if(registration.isActivated()) {
         String newGeneratedToken = util.generateToken(userDetails);
+        
         return newGeneratedToken ;
         }
         else {
@@ -41,7 +39,7 @@ public class JWTService implements UserDetailsService {
         }
         
 
-        //User user = userDao.findById(userName).get();
+       
        
     }
 

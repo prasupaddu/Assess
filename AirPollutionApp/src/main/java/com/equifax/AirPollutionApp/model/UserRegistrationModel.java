@@ -1,6 +1,6 @@
 package com.equifax.AirPollutionApp.model;
 
-import java.io.File;
+
 
 public class UserRegistrationModel {
 
